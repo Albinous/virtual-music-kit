@@ -1,0 +1,25 @@
+@use "variables" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html,
+body {
+  min-height: 100vh;
+  background: $bg-color;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+a {
+  &:focus {
+    outline: 0;
+  }
+}

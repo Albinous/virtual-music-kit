@@ -1,4 +1,4 @@
-import "./styles/style.css";
+import "./styles/style.scss";
 import { createPiano } from "./components/Piano";
 
 const initHeader = () => {

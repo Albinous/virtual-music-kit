@@ -1,0 +1,126 @@
+@use "variables" as *;
+@use "base";
+
+.header {
+  margin: 20px 0 60px;
+  padding-bottom: 20px;
+
+  color: $text-color;
+  text-align: center;
+
+  border-bottom: 1px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #38495a, #a2abb3, #38495a);
+}
+
+.piano {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: $piano-width;
+  height: $white-key-height;
+
+  margin: 0 auto 60px;
+
+  .white-keys {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .keys-sharp {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 53px;
+    right: 53px;
+
+    display: flex;
+    justify-content: space-between;
+
+    pointer-events: none;
+  }
+}
+
+.piano-key {
+  position: relative;
+
+  width: $white-key-width;
+  height: $white-key-height;
+
+  margin: 4px;
+
+  background: $white-key-color;
+  border-radius: 0 0 12px 12px;
+
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    background: $white-key-hover;
+  }
+
+  &.sharp {
+    width: $black-key-width;
+    height: $black-key-height;
+
+    margin: 0;
+
+    background: $bg-color;
+    border: 0;
+    border-radius: 0 0 9px 9px;
+
+    z-index: 3;
+    pointer-events: auto;
+    transform-origin: center top;
+
+    &:active {
+      border-top: 0;
+    }
+
+    &::before,
+    &::after {
+      bottom: 175px;
+      left: 7px;
+    }
+
+    &.none {
+      visibility: hidden;
+    }
+  }
+
+  &.piano-key-active:hover {
+    &::before,
+    &::after {
+      color: #00b4a4;
+    }
+  }
+}
+
+// .piano-key::before,
+// .piano-key::after {
+//   content: attr(data-note);
+//   position: absolute;
+//   width: 40px;
+//   height: 40px;
+//   font-size: 26px;
+//   line-height: 40px;
+//   text-align: center;
+//   color: #a2abb3;
+//   bottom: -45px;
+//   left: 20px;
+//   transition: 0.3s;
+//   pointer-events: none;
+// }
+// .piano-key::after {
+//   display: none;
+//   content: attr(data-letter);
+// }
+// .piano-key:hover::before,
+// .piano-key:hover::after {
+//   color: #d7dfe6;
+// }

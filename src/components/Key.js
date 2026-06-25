@@ -8,7 +8,7 @@ export function createKey(sound) {
 
   const keyLabel = document.createElement("span");
   keyLabel.classList.add("key-label");
-  keyLabel.textContent = sound.key;
+  keyLabel.textContent = `(${sound.key})`;
 
   key.dataset.note = sound.note;
   key.dataset.key = sound.key;
