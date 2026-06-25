@@ -1,5 +1,6 @@
 import "./styles/style.scss";
 import { createPiano } from "./components/Piano";
+import { playSound } from "./utils/playSound";
 
 const initHeader = () => {
   const header = document.createElement("header");

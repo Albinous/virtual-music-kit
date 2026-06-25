@@ -1,5 +1,6 @@
 import { createKey } from "./Key";
 import { sounds } from "../data/sounds";
+import { playSound } from "../utils/playSound";
 
 export function createPiano() {
   const piano = document.createElement("div");
@@ -27,5 +28,20 @@ export function createPiano() {
   piano.append(whiteKeys);
   piano.append(keysSharp);
 
+  piano.addEventListener("click", (event) => {
+    console.log(event);
+    handleKeyClick(event);
+  });
+
   return piano;
 }
+
+const handleKeyClick = (event) => {
+  const key = event.target.closest(".piano-key");
+  if (!key) return;
+
+  const note = key.dataset.note;
+  if (note) {
+    playSound(note);
+  }
+};
