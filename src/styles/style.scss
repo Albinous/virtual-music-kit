@@ -29,6 +29,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    color: $bg-color;
   }
 
   .keys-sharp {
@@ -43,6 +44,7 @@
     justify-content: space-between;
 
     pointer-events: none;
+    color: $border-color;
   }
 }
 
@@ -56,12 +58,21 @@
 
   background: $white-key-color;
   border-radius: 0 0 12px 12px;
+  padding-bottom: 10px;
 
   cursor: pointer;
   transition: $transition;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 
   &:hover {
     background: $white-key-hover;
+  }
+
+  & .note {
+    display: block;
   }
 
   &.sharp {
@@ -117,8 +128,9 @@
 //   pointer-events: none;
 // }
 // .piano-key::after {
-//   display: none;
-//   content: attr(data-letter);
+//   // display: none;
+//   content: attr(data-key);
+//   bottom: -80px;
 // }
 // .piano-key:hover::before,
 // .piano-key:hover::after {
