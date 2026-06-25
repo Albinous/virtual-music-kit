@@ -93,14 +93,11 @@
       border-top: 0;
     }
 
-    &::before,
-    &::after {
-      bottom: 175px;
-      left: 7px;
-    }
-
     &.none {
       visibility: hidden;
+    }
+    &:hover {
+      color: #d7dfe6;
     }
   }
 
@@ -111,28 +108,3 @@
     }
   }
 }
-
-// .piano-key::before,
-// .piano-key::after {
-//   content: attr(data-note);
-//   position: absolute;
-//   width: 40px;
-//   height: 40px;
-//   font-size: 26px;
-//   line-height: 40px;
-//   text-align: center;
-//   color: #a2abb3;
-//   bottom: -45px;
-//   left: 20px;
-//   transition: 0.3s;
-//   pointer-events: none;
-// }
-// .piano-key::after {
-//   // display: none;
-//   content: attr(data-key);
-//   bottom: -80px;
-// }
-// .piano-key:hover::before,
-// .piano-key:hover::after {
-//   color: #d7dfe6;
-// }
