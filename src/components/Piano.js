@@ -30,10 +30,12 @@ export function createPiano() {
 
   piano.addEventListener("mousedown", handleMouseDown);
 
-  piano.addEventListener("mouseup", handleMouseUp);
+  document.addEventListener("mouseup", handleMouseUp);
 
   return piano;
 }
+
+let activeMouseKey = null;
 
 const getPianoKey = (letter) => {
   return document.querySelector(`.piano-key[data-code=${letter}]`);
@@ -41,6 +43,8 @@ const getPianoKey = (letter) => {
 
 const playKey = (key) => {
   if (!key) return;
+
+  activeMouseKey = key;
 
   const note = key.dataset.note;
   if (note) {
@@ -54,10 +58,10 @@ const handleMouseDown = (event) => {
 };
 
 const handleMouseUp = (event) => {
-  const key = event.target.closest(".piano-key");
-  if (!key) return;
+  if (!activeMouseKey) return;
 
-  removeActiveKey(key);
+  removeActiveKey(activeMouseKey);
+  activeMouseKey = null;
 };
 
 const handleKeyDown = (event) => {
