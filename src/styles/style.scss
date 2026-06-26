@@ -99,6 +99,15 @@
     &:hover {
       color: #d7dfe6;
     }
+    &.piano-key-active {
+      transform: scale(0.96);
+      // background-color: #fff;
+    }
+  }
+
+  &.piano-key-active {
+    transform: scale(0.96);
+    // background-color: #fff;
   }
 
   &.piano-key-active:hover {

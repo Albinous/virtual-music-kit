@@ -28,28 +28,58 @@ export function createPiano() {
   piano.append(whiteKeys);
   piano.append(keysSharp);
 
-  piano.addEventListener("click", (event) => {
-    handleKeyClick(event);
-  });
+  piano.addEventListener("mousedown", handleMouseDown);
+
+  piano.addEventListener("mouseup", handleMouseUp);
 
   return piano;
 }
 
-const handleKeyClick = (event) => {
-  const key = event.target.closest(".piano-key");
+const getPianoKey = (letter) => {
+  return document.querySelector(`.piano-key[data-key=${letter.toUpperCase()}]`);
+};
+
+const playKey = (key) => {
   if (!key) return;
 
   const note = key.dataset.note;
   if (note) {
     playSound(note);
   }
+  addActiveKey(key);
+};
+
+const handleMouseDown = (event) => {
+  playKey(event.target.closest(".piano-key"));
+};
+
+const handleMouseUp = (event) => {
+  const key = event.target.closest(".piano-key");
+  if (!key) return;
+
+  removeActiveKey(key);
 };
 
 const handleKeyDown = (event) => {
-  const key = event.key.toUpperCase();
-  const pianoKey = document.querySelector(`.piano-key[data-key=${key}]`);
+  if (event.repeat) return;
+
+  playKey(getPianoKey(event.key));
+};
+
+const handleKeyUp = (event) => {
+  const pianoKey = getPianoKey(event.key);
   if (!pianoKey) return;
-  playSound(pianoKey.dataset.note);
+  removeActiveKey(pianoKey);
+};
+
+const addActiveKey = (key) => {
+  key.classList.add("piano-key-active");
+};
+
+const removeActiveKey = (key) => {
+  key.classList.remove("piano-key-active");
 };
 
 document.addEventListener("keydown", handleKeyDown);
+
+document.addEventListener("keyup", handleKeyUp);
