@@ -36,7 +36,7 @@ export function createPiano() {
 }
 
 const getPianoKey = (letter) => {
-  return document.querySelector(`.piano-key[data-key=${letter.toUpperCase()}]`);
+  return document.querySelector(`.piano-key[data-code=${letter}]`);
 };
 
 const playKey = (key) => {
@@ -63,11 +63,11 @@ const handleMouseUp = (event) => {
 const handleKeyDown = (event) => {
   if (event.repeat) return;
 
-  playKey(getPianoKey(event.key));
+  playKey(getPianoKey(event.code));
 };
 
 const handleKeyUp = (event) => {
-  const pianoKey = getPianoKey(event.key);
+  const pianoKey = getPianoKey(event.code);
   if (!pianoKey) return;
   removeActiveKey(pianoKey);
 };

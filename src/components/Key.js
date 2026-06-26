@@ -8,10 +8,10 @@ export function createKey(sound) {
 
   const keyLabel = document.createElement("span");
   keyLabel.classList.add("key-label");
-  keyLabel.textContent = `(${sound.key})`;
+  keyLabel.textContent = `(${sound.code.slice(3)})`;
 
   key.dataset.note = sound.note;
-  key.dataset.key = sound.key;
+  key.dataset.code = sound.code;
 
   if (sound.sharp) {
     key.classList.add("sharp");
