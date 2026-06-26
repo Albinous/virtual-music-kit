@@ -29,7 +29,6 @@ export function createPiano() {
   piano.append(keysSharp);
 
   piano.addEventListener("click", (event) => {
-    console.log(event);
     handleKeyClick(event);
   });
 
@@ -45,3 +44,12 @@ const handleKeyClick = (event) => {
     playSound(note);
   }
 };
+
+const handleKeyDown = (event) => {
+  const key = event.key.toUpperCase();
+  const pianoKey = document.querySelector(`.piano-key[data-key=${key}]`);
+  if (!pianoKey) return;
+  playSound(pianoKey.dataset.note);
+};
+
+document.addEventListener("keydown", handleKeyDown);
