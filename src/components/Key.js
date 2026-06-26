@@ -17,8 +17,12 @@ export function createKey(sound) {
     key.classList.add("sharp");
   }
 
+  const editBtn = document.createElement("button");
+  editBtn.classList.add("edit-key__btn");
+
   key.append(note);
   key.append(keyLabel);
+  key.append(editBtn);
 
   return key;
 }
