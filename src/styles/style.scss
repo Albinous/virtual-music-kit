@@ -13,6 +13,11 @@
   border-image-source: linear-gradient(to left, #38495a, #a2abb3, #38495a);
 }
 
+.music-kit {
+  max-width: $piano-width;
+  margin: 0 auto;
+}
+
 .piano {
   position: relative;
 
@@ -20,7 +25,6 @@
   justify-content: space-between;
 
   width: 100%;
-  max-width: $piano-width;
   height: $white-key-height;
 
   margin: 0 auto 60px;
@@ -152,4 +156,25 @@
   margin: 0 auto;
   text-align: center;
   font-size: 13px;
+}
+
+.sequence {
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-input {
+    width: 85%;
+  }
+
+  &-btn {
+    color: $bg-color;
+    background: $white-key-color;
+    padding: 6px 18px;
+
+    &:hover {
+      background: #fff;
+    }
+  }
 }

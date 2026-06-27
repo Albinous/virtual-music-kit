@@ -3,6 +3,8 @@ import { sounds } from "../data/sounds";
 import { playSound } from "../utils/playSound";
 
 export function createPiano() {
+  const musicKit = document.createElement("div");
+  musicKit.classList.add("music-kit");
   const piano = document.createElement("div");
   piano.classList.add("piano");
   const whiteKeys = document.createElement("div");
@@ -32,8 +34,30 @@ export function createPiano() {
 
   document.addEventListener("mouseup", handleMouseUp);
 
-  return piano;
+  const sequenceControls = createSequenceControls();
+
+  musicKit.append(piano);
+  musicKit.append(sequenceControls);
+
+  return musicKit;
 }
+
+const createSequenceControls = () => {
+  const wrapper = document.createElement("div");
+  const input = document.createElement("input");
+  const playBtn = document.createElement("button");
+
+  wrapper.classList.add("sequence-wrapper");
+  input.classList.add("sequence-input");
+  playBtn.classList.add("sequence-btn");
+
+  playBtn.textContent = "Play";
+
+  wrapper.append(input);
+  wrapper.append(playBtn);
+
+  return wrapper;
+};
 
 let activeMouseKey = null;
 let activeKeyboardKey = null;
