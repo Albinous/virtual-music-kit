@@ -42,6 +42,8 @@ export function createPiano() {
   return musicKit;
 }
 
+let isPlaying = false;
+
 const createSequenceControls = () => {
   const wrapper = document.createElement("div");
   const input = document.createElement("input");
@@ -60,6 +62,10 @@ const createSequenceControls = () => {
     handleInputKeyDown(event, input);
   });
 
+  playBtn.addEventListener("click", () => {
+    playSequence(input, playBtn);
+  });
+
   return wrapper;
 };
 
@@ -67,6 +73,7 @@ const serviceKeys = ["Backspace", "Delete", "Tab", "ArrowLeft", "ArrowRight"];
 const ctrlKeys = ["a", "c", "v", "x"];
 
 const handleInputKeyDown = (event, input) => {
+  if (isPlaying) return;
   const value = event.key.toUpperCase();
   const allowedKeys = sounds.map((item) => item.key);
 
@@ -91,6 +98,35 @@ const handleInputKeyDown = (event, input) => {
   event.preventDefault();
 };
 
+const playSequence = (input, btn) => {
+  isPlaying = true;
+  btn.disabled = true;
+  input.disabled = true;
+  const keys = input.value.split("");
+
+  keys.forEach((key, index) => {
+    const pianoKey = getPianoKey(`Key${key}`);
+    setTimeout(
+      () => {
+        playKey(pianoKey);
+        setTimeout(() => {
+          removeActiveKey(pianoKey);
+        }, 100);
+      },
+      350 * (index + 1),
+    );
+  });
+
+  setTimeout(
+    () => {
+      isPlaying = false;
+      btn.disabled = false;
+      input.disabled = false;
+    },
+    keys.length * 350 + 200,
+  );
+};
+
 let activeMouseKey = null;
 let activeKeyboardKey = null;
 
@@ -111,6 +147,7 @@ const playKey = (key) => {
 };
 
 const handleMouseDown = (event) => {
+  if (isPlaying) return;
   playKey(event.target.closest(".piano-key"));
 };
 
@@ -122,6 +159,7 @@ const handleMouseUp = (event) => {
 };
 
 const handleKeyDown = (event) => {
+  if (isPlaying) return;
   const pianoKey = getPianoKey(event.code);
   if (event.repeat) return;
   if (activeKeyboardKey) return;

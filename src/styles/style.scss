@@ -176,5 +176,10 @@
     &:hover {
       background: #fff;
     }
+
+    &[disabled] {
+      background-color: #b6b9bb;
+      color: #858687;
+    }
   }
 }
