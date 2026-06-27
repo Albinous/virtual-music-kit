@@ -56,7 +56,23 @@ const createSequenceControls = () => {
   wrapper.append(input);
   wrapper.append(playBtn);
 
+  input.addEventListener("keydown", (event) => {
+    handleInputKeyDown(event, input);
+  });
+
   return wrapper;
+};
+
+const handleInputKeyDown = (event, input) => {
+  const value = event.key.toUpperCase();
+  const allowedKeys = sounds.map((item) => item.key);
+  if (allowedKeys.includes(value)) {
+    event.preventDefault();
+    input.value += value;
+  } else {
+    event.preventDefault();
+  }
+  console.log(input.value);
 };
 
 let activeMouseKey = null;
