@@ -2,6 +2,7 @@ export const sounds = [
   {
     id: 1,
     note: "C",
+    key: "D",
     code: "KeyD",
     sharp: false,
     file: "c",
@@ -9,6 +10,7 @@ export const sounds = [
   {
     id: 2,
     note: "C#",
+    key: "R",
     code: "KeyR",
     sharp: true,
     file: "cs",
@@ -16,6 +18,7 @@ export const sounds = [
   {
     id: 3,
     note: "D",
+    key: "F",
     code: "KeyF",
     sharp: false,
     file: "d",
@@ -23,6 +26,7 @@ export const sounds = [
   {
     id: 4,
     note: "D#",
+    key: "T",
     code: "KeyT",
     sharp: true,
     file: "ds",
@@ -30,6 +34,7 @@ export const sounds = [
   {
     id: 5,
     note: "E",
+    key: "G",
     code: "KeyG",
     sharp: false,
     file: "e",
@@ -37,6 +42,7 @@ export const sounds = [
   {
     id: 6,
     note: "F",
+    key: "H",
     code: "KeyH",
     sharp: false,
     file: "f",
@@ -44,6 +50,7 @@ export const sounds = [
   {
     id: 7,
     note: "F#",
+    key: "U",
     code: "KeyU",
     sharp: true,
     file: "fs",
@@ -51,6 +58,7 @@ export const sounds = [
   {
     id: 8,
     note: "G",
+    key: "J",
     code: "KeyJ",
     sharp: false,
     file: "g",
@@ -58,6 +66,7 @@ export const sounds = [
   {
     id: 9,
     note: "G#",
+    key: "I",
     code: "KeyI",
     sharp: true,
     file: "gs",
@@ -65,6 +74,7 @@ export const sounds = [
   {
     id: 10,
     note: "A",
+    key: "K",
     code: "KeyK",
     sharp: false,
     file: "a",
@@ -72,6 +82,7 @@ export const sounds = [
   {
     id: 11,
     note: "A#",
+    key: "O",
     code: "KeyO",
     sharp: true,
     file: "as",
@@ -79,6 +90,7 @@ export const sounds = [
   {
     id: 12,
     note: "B",
+    key: "L",
     code: "KeyL",
     sharp: false,
     file: "b",
