@@ -72,6 +72,7 @@ const createSequenceControls = () => {
 const serviceKeys = ["Backspace", "Delete", "Tab", "ArrowLeft", "ArrowRight"];
 const ctrlKeys = ["a", "c", "v", "x"];
 
+// ввод нескольких нот в инпут
 const handleInputKeyDown = (event, input) => {
   if (isPlaying) return;
   const value = event.key.toUpperCase();
@@ -98,6 +99,7 @@ const handleInputKeyDown = (event, input) => {
   event.preventDefault();
 };
 
+// воспроизведение музыки по инпуту
 const playSequence = (input, btn) => {
   isPlaying = true;
   btn.disabled = true;
