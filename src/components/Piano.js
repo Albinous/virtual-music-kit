@@ -63,16 +63,32 @@ const createSequenceControls = () => {
   return wrapper;
 };
 
+const serviceKeys = ["Backspace", "Delete", "Tab", "ArrowLeft", "ArrowRight"];
+const ctrlKeys = ["a", "c", "v", "x"];
+
 const handleInputKeyDown = (event, input) => {
   const value = event.key.toUpperCase();
   const allowedKeys = sounds.map((item) => item.key);
-  if (allowedKeys.includes(value)) {
+
+  const isControlPressed = event.ctrlKey || event.metaKey;
+  const pressedKey = event.key.toLowerCase();
+
+  if (serviceKeys.includes(event.key)) return;
+
+  if (isControlPressed && ctrlKeys.includes(pressedKey)) {
+    return;
+  }
+
+  if (
+    allowedKeys.includes(value) &&
+    input.value.length < allowedKeys.length * 2
+  ) {
     event.preventDefault();
     input.value += value;
-  } else {
-    event.preventDefault();
+    return;
   }
-  console.log(input.value);
+
+  event.preventDefault();
 };
 
 let activeMouseKey = null;
