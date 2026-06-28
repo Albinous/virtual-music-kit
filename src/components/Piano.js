@@ -27,8 +27,7 @@ export function createPiano() {
     }
   });
 
-  piano.append(whiteKeys);
-  piano.append(keysSharp);
+  piano.append(whiteKeys, keysSharp);
 
   piano.addEventListener("mousedown", handleMouseDown);
 
@@ -36,8 +35,7 @@ export function createPiano() {
 
   const sequenceControls = createSequenceControls();
 
-  musicKit.append(piano);
-  musicKit.append(sequenceControls);
+  musicKit.append(piano, sequenceControls);
 
   return musicKit;
 }
@@ -153,7 +151,7 @@ const handleMouseDown = (event) => {
   playKey(event.target.closest(".piano-key"));
 };
 
-const handleMouseUp = (event) => {
+const handleMouseUp = () => {
   if (!activeMouseKey) return;
 
   removeActiveKey(activeMouseKey);
@@ -171,7 +169,7 @@ const handleKeyDown = (event) => {
   playKey(pianoKey);
 };
 
-const handleKeyUp = (event) => {
+const handleKeyUp = () => {
   if (!activeKeyboardKey) return;
 
   removeActiveKey(activeKeyboardKey);

@@ -1,6 +1,5 @@
 import "./styles/style.scss";
 import { createPiano } from "./components/Piano";
-import { playSound } from "./utils/playSound";
 
 const initHeader = () => {
   const header = document.createElement("header");
@@ -13,5 +12,4 @@ const initHeader = () => {
 
 const header = initHeader();
 const piano = createPiano();
-document.body.append(header);
-document.body.append(piano);
+document.body.append(header, piano);

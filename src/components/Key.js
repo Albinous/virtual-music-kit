@@ -27,10 +27,7 @@ export function createKey(sound) {
   const editBtn = document.createElement("button");
   editBtn.classList.add("edit-key__btn");
 
-  key.append(note);
-  key.append(keyLabel);
-  key.append(inputKey);
-  key.append(editBtn);
+  key.append(note, keyLabel, inputKey, editBtn);
 
   editBtn.addEventListener("click", () => {
     startEdit(keyLabel, inputKey);
